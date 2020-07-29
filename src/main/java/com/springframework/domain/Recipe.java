@@ -3,6 +3,7 @@ package com.springframework.domain;
 import net.bytebuddy.dynamic.loading.InjectionClassLoader;
 
 import javax.persistence.*;
+import java.util.HashSet;
 import java.util.Set;
 
 
@@ -16,19 +17,25 @@ public class Recipe {
     private String description;
     private Integer prepTime;
     private Integer servings;
+
+
+    private Integer cooktime;
     private String source;
     private String url;
+
+    @Lob
     private String directions;
-
-
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "recipe")
-    private Set<Ingredient> ingredientSet;
-
     @Lob
     private Byte[] image;
 
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "recipe")
+    private Set<Ingredient> ingredientSet = new HashSet<>();
+
     @OneToOne(cascade = CascadeType.ALL)
     private Notes notes;
+
+    @Enumerated(value = EnumType.STRING)
+    private Difficulty difficulty;
 
     @ManyToMany
     @JoinTable(name = "recipe_catagory",
@@ -36,10 +43,11 @@ public class Recipe {
             inverseJoinColumns = @JoinColumn(name = "catagory_id"))
 
 
-    private Set<Catagory> catagories;
+    private Set<Catagory> catagories = new HashSet<>();
 
-    @Enumerated(value = EnumType.STRING)
-    private Difficulty difficulty;
+
+
+    //Getters / Setters..
 
     public String getDescription() {
         return description;
@@ -120,4 +128,14 @@ public class Recipe {
     public void setCatagories(Set<Catagory> catagories) {
         this.catagories = catagories;
     }
+
+
+    public Integer getCooktime() {
+        return cooktime;
+    }
+
+    public void setCooktime(Integer cooktime) {
+        this.cooktime = cooktime;
+    }
+
 }

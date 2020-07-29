@@ -1,0 +1,15 @@
+INSERT INTO CATAGORY (DESCRIPTION) VALUES ('American');
+INSERT INTO CATAGORY (DESCRIPTION) VALUES ('Italian');
+INSERT INTO CATAGORY (DESCRIPTION) VALUES ('Mexican');
+INSERT INTO CATAGORY (DESCRIPTION) VALUES ('Brittish');
+INSERT INTO CATAGORY (DESCRIPTION) VALUES ('Asian');
+INSERT INTO CATAGORY (DESCRIPTION) VALUES ('Chiniese');
+INSERT INTO CATAGORY (DESCRIPTION) VALUES ('Ukrainian');
+insert into Mesurements (UNIT_OF_MEASURE) values ('Tea Spoon');
+insert into Mesurements (UNIT_OF_MEASURE) values ('Cup');
+insert into Mesurements (UNIT_OF_MEASURE) values ('Pinch');
+insert into Mesurements (UNIT_OF_MEASURE) values ('Grams');
+insert into Mesurements (UNIT_OF_MEASURE) values ('ml');
+insert into Mesurements (UNIT_OF_MEASURE) values ('Liter');
+insert into Mesurements (UNIT_OF_MEASURE) values ('Kg');
+insert into Mesurements (UNIT_OF_MEASURE) values ('Each');
