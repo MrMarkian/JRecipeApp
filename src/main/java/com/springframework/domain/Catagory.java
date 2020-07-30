@@ -2,6 +2,7 @@ package com.springframework.domain;
 
 
 import javax.persistence.*;
+import java.util.HashSet;
 import java.util.Set;
 
 @Entity
@@ -13,7 +14,7 @@ public class Catagory {
     private String description;
 
     @ManyToMany(mappedBy = "catagories")
-    private Set<Recipe> recipeSet;
+    private Set<Recipe> recipeSet = new HashSet<>();
 
     public Long getId() {
         return id;

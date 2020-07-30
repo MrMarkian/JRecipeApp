@@ -49,6 +49,10 @@ public class Recipe {
 
     //Getters / Setters..
 
+    public Long getId(){return id;}
+
+    public void setId(Long id){this.id = id;}
+
     public String getDescription() {
         return description;
     }
@@ -138,4 +142,12 @@ public class Recipe {
         this.cooktime = cooktime;
     }
 
+    public Set<Ingredient> getIngredientSet() {
+        return ingredientSet;
+    }
+
+    public void setIngredientSet(Set<Ingredient> ingredientSet) {
+
+        this.ingredientSet = ingredientSet;
+    }
 }

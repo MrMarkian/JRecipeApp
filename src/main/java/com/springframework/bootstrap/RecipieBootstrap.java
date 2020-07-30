@@ -1,6 +1,5 @@
 package com.springframework.bootstrap;
 
-
 import com.springframework.domain.*;
 import com.springframework.domain.repositories.CatagoryRepository;
 import com.springframework.domain.repositories.MeasurementsRepository;
@@ -9,10 +8,10 @@ import org.springframework.context.ApplicationListener;
 import org.springframework.context.event.ContextRefreshedEvent;
 import org.springframework.stereotype.Component;
 
+import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
-
 
 @Component
 public class RecipieBootstrap implements ApplicationListener<ContextRefreshedEvent> {
@@ -29,8 +28,6 @@ public class RecipieBootstrap implements ApplicationListener<ContextRefreshedEve
         this.measurementsRepository = measurementsRepository;
         this.recipeRepository = recipeRepository;
     }
-
-
 
     private List<Recipe> getRecipies() {
 
@@ -126,10 +123,19 @@ public class RecipieBootstrap implements ApplicationListener<ContextRefreshedEve
         guacNotes.setRecipe(guacRecipe);
         guacRecipe.setNotes(guacNotes);
 
+        guacRecipe.getIngredientSet().add(new Ingredient("Ripe Avacodo", new BigDecimal(2), eachMes, guacRecipe));
+        guacRecipe.getIngredientSet().add(new Ingredient("Kosher Salt", new BigDecimal(3), PinchMes, guacRecipe));
+        guacRecipe.getIngredientSet().add(new Ingredient("fresh lime juice", new BigDecimal(2), teaSpoonMes, guacRecipe));
+        guacRecipe.getIngredientSet().add(new Ingredient("minced red onion or thinly sclied standard onion", new BigDecimal(2), eachMes, guacRecipe));
+        guacRecipe.getIngredientSet().add(new Ingredient("Chillies, with stems and seeds removed", new BigDecimal(2), eachMes, guacRecipe));
+        guacRecipe.getIngredientSet().add(new Ingredient("Black Pepper", new BigDecimal(2), teaSpoonMes, guacRecipe));
+        guacRecipe.getIngredientSet().add(new Ingredient("Ripe Tomato, seeds and pulp removed", new BigDecimal(2), eachMes, guacRecipe));
+
+        guacRecipe.getCatagories().add(americanCatagory);
+
         recipies.add(guacRecipe);
 
         return recipies;
-
     }
 
     /**
@@ -138,7 +144,7 @@ public class RecipieBootstrap implements ApplicationListener<ContextRefreshedEve
      * @param event the event to respond to
      */
     @Override
-    public void onApplicationEvent(ContextRefreshedEvent event) {
-            recipeRepository.saveAll(getRecipies());
+    public void onApplicationEvent(ContextRefreshedEvent event){
+          recipeRepository.saveAll(getRecipies());
     }
 }
