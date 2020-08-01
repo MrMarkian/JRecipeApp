@@ -14,15 +14,15 @@ import java.util.List;
 import java.util.Optional;
 
 @Component
-public class RecipieBootstrap implements ApplicationListener<ContextRefreshedEvent> {
+public class RecipeBootstrap implements ApplicationListener<ContextRefreshedEvent> {
 
     private final CatagoryRepository catagoryRepository;
     private final MeasurementsRepository measurementsRepository;
     private final RecipeRepository recipeRepository;
 
-    public RecipieBootstrap(CatagoryRepository catagoryRepository,
-                            MeasurementsRepository measurementsRepository,
-                            RecipeRepository recipeRepository) {
+    public RecipeBootstrap(CatagoryRepository catagoryRepository,
+                           MeasurementsRepository measurementsRepository,
+                           RecipeRepository recipeRepository) {
 
         this.catagoryRepository = catagoryRepository;
         this.measurementsRepository = measurementsRepository;
@@ -95,19 +95,26 @@ public class RecipieBootstrap implements ApplicationListener<ContextRefreshedEve
 
         //get Catagories
         Optional<Catagory> americanCatagoryOptional = catagoryRepository.findByDescription("American");
+        Optional<Catagory> mexicanCatagoryOptional = catagoryRepository.findByDescription("Mexican");
 
         if(!americanCatagoryOptional.isPresent()){
-            throw new RuntimeException("Catagory Not Found.. ");
+            throw new RuntimeException("American Catagory Not Found.. ");
         }
 
-        Catagory americanCatagory = americanCatagoryOptional.get();
+        if(!mexicanCatagoryOptional.isPresent()){
+            throw new RuntimeException("Mexican Catagory Not Found.. ");
+        }
 
+
+        Catagory americanCatagory = americanCatagoryOptional.get();
+        Catagory mexicanCatagory = mexicanCatagoryOptional.get();
 
         //Guacamole Recipie
         Recipe guacRecipe = new Recipe();
         guacRecipe.setDescription("Perfect Gouacamole");
         guacRecipe.setPrepTime(10);
         guacRecipe.setCooktime(0);
+        guacRecipe.setServings(2);
         guacRecipe.setDifficulty(Difficulty.EASY);
 
         Notes guacNotes = new Notes();
@@ -132,6 +139,7 @@ public class RecipieBootstrap implements ApplicationListener<ContextRefreshedEve
         guacRecipe.getIngredientSet().add(new Ingredient("Ripe Tomato, seeds and pulp removed", new BigDecimal(2), eachMes, guacRecipe));
 
         guacRecipe.getCatagories().add(americanCatagory);
+        guacRecipe.getCatagories().add(mexicanCatagory);
 
         recipies.add(guacRecipe);
 

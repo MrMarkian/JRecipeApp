@@ -5,15 +5,16 @@ import com.springframework.domain.repositories.RecipeRepository;
 import org.springframework.stereotype.Service;
 
 import java.util.HashSet;
+import java.util.Optional;
 import java.util.Set;
 
 @Service
-public class RecipieImplementation implements RecipieService {
+public class RecipeImplementation implements RecipeService {
 
 
     private final RecipeRepository recipeRepository;
 
-    public RecipieImplementation(RecipeRepository recipeRepository) {
+    public RecipeImplementation(RecipeRepository recipeRepository) {
         this.recipeRepository = recipeRepository;
     }
 
@@ -25,4 +26,16 @@ public class RecipieImplementation implements RecipieService {
         recipeRepository.findAll().iterator().forEachRemaining(thisRecipie::add);
         return thisRecipie;
     }
+
+    @Override
+    public Recipe findById(Long id){
+        Optional<Recipe> recipeOptional = recipeRepository.findById(id);
+
+        if (!recipeOptional.isPresent()){
+            throw new RuntimeException("Recipe not found..");
+        }
+
+        return recipeOptional.get();
+    }
+
 }

@@ -1,31 +1,24 @@
 package com.springframework.Controllers;
 
-import com.springframework.domain.Catagory;
-import com.springframework.domain.Mesurements;
-import com.springframework.domain.repositories.CatagoryRepository;
-import com.springframework.domain.repositories.MeasurementsRepository;
-import com.springframework.services.RecipieService;
+import com.springframework.services.RecipeService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
-
-import javax.swing.text.html.Option;
-import java.util.Optional;
 
 @Controller
 public class IndexController {
 
 
-    private final RecipieService recipieService;
+    private final RecipeService recipeService;
 
-    public IndexController(RecipieService recipieService) {
-        this.recipieService = recipieService;
+    public IndexController(RecipeService recipeService) {
+        this.recipeService = recipeService;
     }
 
     @RequestMapping ({"","/","/index"})
     public String getIndexPage(Model model){
 
-       model.addAttribute("recipes", recipieService.getRecipes());
+       model.addAttribute("recipes", recipeService.getRecipes());
 
         return "index";
     }
