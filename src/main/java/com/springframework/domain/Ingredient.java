@@ -1,8 +1,15 @@
 package com.springframework.domain;
 
+import lombok.EqualsAndHashCode;
+import lombok.Getter;
+import lombok.Setter;
+
 import javax.persistence.*;
 import java.math.BigDecimal;
 
+@Getter
+@Setter
+@EqualsAndHashCode(exclude = {"recipe"})
 @Entity
 public class Ingredient {
 
@@ -21,7 +28,7 @@ public class Ingredient {
     public Ingredient() {
     }
 
-    public Ingredient (String description, BigDecimal amount, Mesurements uom, Recipe recipe){
+    public Ingredient(String description, BigDecimal amount, Mesurements uom, Recipe recipe) {
         this.description = description;
         this.amount = amount;
         this.mesurements = uom;
@@ -29,46 +36,4 @@ public class Ingredient {
 
     }
 
-
-    //---------/ Methods
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public String getDescription() {
-        return description;
-    }
-
-    public void setDescription(String description) {
-        this.description = description;
-    }
-
-    public BigDecimal getAmount() {
-        return amount;
-    }
-
-    public void setAmount(BigDecimal amount) {
-        this.amount = amount;
-    }
-
-    public Recipe getRecipe() {
-        return recipe;
-    }
-
-    public void setRecipe(Recipe recipe) {
-        this.recipe = recipe;
-    }
-
-    public Mesurements getMesurements() {
-        return mesurements;
-    }
-
-    public void setMesurements(Mesurements mesurements) {
-        this.mesurements = mesurements;
-    }
 }
