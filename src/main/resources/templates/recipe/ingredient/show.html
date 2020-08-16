@@ -2,7 +2,7 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8"/>
-    <title>Recipe Home</title>
+    <title>Ingredient Details.</title>
 
     <script src="/webjars/jquery/3.5.1/jquery.js"> </script>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
@@ -13,33 +13,35 @@
 
 </head>
 <body>
-
-<div class="jumbotron">
-    <div class="container">
-        <h1 class="display-1">My Recipies!</h1>
-        <p>Welcome to my secret recipe respository.
-            Although I don't do a lot of cooking so dont expect there to be much here.. . </p>
-        <p><a class="btn btn-primary btn-lg" href="/recipe/new" role="button">New Recipe</a></p>
+<div class="card mx-auto">
+    <div class="card-body">
+<div class="table-responsive">
+    <table class="table table-hover ">
+        <thead class="thead-inverse">
+        <tr>
+            <th>ID</th>
+            <th>Amount</th>
+            <th>Desciption</th>
+            <th>Measurement Unit</th>
+        </tr>
+        </thead>
+        <tr th:remove="all">
+            <td>12333</td>
+            <td>Tasty Goodnees 2</td>
+            <td><a href="#">View</a></td>
+            <td><a href="#">Update</a></td>
+            <td><a href="#">Delete</a></td>
+        </tr>
+        <tr>
+            <td th:text="${ingredient.id}">334</td>
+            <td th:text="${ingredient.amount}"></td>
+            <td th:text="${ingredient.description}"></td>
+            <td th:text="${ingredient.measurementCommand.description}"></td>
+        </tr>
+    </table>
+</div>
     </div>
 </div>
 
-<table class="table table-bordered table-striped text-center table-hover">
-    <tr>
-        <th>ID</th>
-        <th>Description</th>
-        <th>View</th>
-        <th>Update</th>
-        <th>Delete</th>
-    </tr>
-    <tr th:each="recipe : ${recipes}">
-        <td th:text="${recipe.id}"> </td>
-        <td th:text="${recipe.description}"> </td>
-        <td><a href="#" th:href="@{'/recipe/show/'+ ${recipe.id}}">View</a> </td>
-        <td><a href="#" th:href="@{'/recipe/update/'+ ${recipe.id}}">Update</a> </td>
-        <td><a href="#" th:href="@{'/recipe/delete/'+ ${recipe.id}}">Delete</a> </td>
-    </tr>
-</table>
-
 </body>
-
 </html>

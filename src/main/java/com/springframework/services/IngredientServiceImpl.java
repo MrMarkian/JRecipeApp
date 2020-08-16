@@ -9,6 +9,8 @@ import com.springframework.domain.repositories.MeasurementsRepository;
 import com.springframework.domain.repositories.RecipeRepository;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
+
+import javax.transaction.Transactional;
 import java.util.Optional;
 
 
@@ -52,6 +54,7 @@ public class IngredientServiceImpl implements IngredientService {
     }
 
     @Override
+    @Transactional
     public IngredientsCommand saveIngredientCommand(IngredientsCommand command) {
 
         Optional<Recipe> recipeOptional = recipeRepository.findById(command.getRecipeId());

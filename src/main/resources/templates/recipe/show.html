@@ -64,11 +64,19 @@
 
     </div>
 </div>
-
+<a class="btn btn-primary" th:href="@{'/recipe/' + ${recipe.id} + '/ingredients'}" role="button">List Ingredients</a>
+<p></p>
 <div class="card">
     <h4 class="card-title">Ingredients:</h4>
 
     <table class="table table-bordered table-striped text-center table-hover">
+        <tr>
+            <th>Description</th>
+            <th>Amount</th>
+            <th>Measurment</th>
+
+        </tr>
+
         <tr th:each="ingredient : ${recipe.getIngredients()}">
            <td th:text="${ingredient.description} "> </td>
             <td th:text="${ingredient.getAmount()} "> </td>

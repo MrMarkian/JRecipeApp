@@ -3,11 +3,14 @@ package com.springframework.services;
 import com.springframework.commands.MeasurementCommand;
 import com.springframework.converters.MeasuremntToMeasureCommand;
 import com.springframework.domain.repositories.MeasurementsRepository;
+import org.springframework.stereotype.Service;
 
+import javax.transaction.Transactional;
 import java.util.Set;
 import java.util.stream.Collectors;
 import java.util.stream.StreamSupport;
 
+@Service
 public class MeasurementsServiceImpl implements MeasurementsService {
 
     private final MeasurementsRepository measurementsRepository;
@@ -19,6 +22,7 @@ public class MeasurementsServiceImpl implements MeasurementsService {
     }
 
     @Override
+    @Transactional
     public Set<MeasurementCommand> listAllMeasurements() {
         return StreamSupport.stream(measurementsRepository.findAll()
         .spliterator(), false)

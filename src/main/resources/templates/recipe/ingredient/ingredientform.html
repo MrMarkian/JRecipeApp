@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Title</title>
+
+    <script src="/webjars/jquery/3.5.1/jquery.js"> </script>
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="/webjars/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+
+</head>
+<body>
+
+<div class="card mx-auto">
+
+    <form  th:object="${ingredient}" th:action="@{'/recipe/' +${ingredient.getRecipeId()} +'/ingredient'}" method="post">
+
+        <input type="hidden" th:field="*{id}"/>
+
+        <div class="card-body">
+
+
+            <div class="row">
+                <div class="col-md-3 form-group">
+                    <label>Description
+                        <input type="text" class="form-control" th:field="*{description}"/>
+                    </label>
+                </div>
+
+                <div class="col-md-3 form-group">
+                    <label>Amount:
+                        <input type="number" class="form-control" th:field="*{amount}"/>
+                    </label>
+                </div>
+
+                <div class="col-md-3 form-group">
+                   <label>Measurements:
+                        <select class="form-control" name="measurements.id">
+                            <option th:each="uomEach : ${measurements}"
+                                    th:value="${uomEach.id}"
+                                    th:selected="${uomEach.id.equals(ingredient.measurementCommand.id)}"
+                                    th:text="${uomEach.description}">Each</option>
+                        </select>
+                    </label>
+                </div>
+
+        </div>
+        </div>
+
+    </form>
+
+</div>
+
+
+<button type="submit" class="btn btn-primary">Submit</button>
+
+</body>
+</html>
