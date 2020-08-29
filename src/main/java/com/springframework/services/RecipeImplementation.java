@@ -39,10 +39,10 @@ public class RecipeImplementation implements RecipeService {
     }
 
     @Override
-    public Recipe findById(Long id){
+    public Recipe findById(Long l){
 
-        log.debug("Finding Recipe Number: "+id.toString() );
-        Optional<Recipe> recipeOptional = recipeRepository.findById(id);
+        log.debug("Finding Recipe Number: "+l.toString() );
+        Optional<Recipe> recipeOptional = recipeRepository.findById(l);
 
         if (!recipeOptional.isPresent()){
             throw new RuntimeException("Recipe not found..");

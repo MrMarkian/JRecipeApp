@@ -26,7 +26,7 @@ class MeasurementsRepositoryTestIT {
 
     @Test
     void findByUnitOfMeasure() {
-        Optional <Mesurements> mesurementsOptional = measurementsRepository.findByUnitOfMeasure("Tea Spoon");
-        assertEquals("Tea Spoon",mesurementsOptional.get().getUnitOfMeasure());
+        Optional <Mesurements> mesurementsOptional = measurementsRepository.findByDescription("Tea Spoon");
+        assertEquals("Tea Spoon",mesurementsOptional.get().getDescription());
     }
 }

@@ -18,11 +18,14 @@ public class MeasuremntToMeasureCommand implements Converter<Mesurements, Measur
     @Override
     public MeasurementCommand convert(Mesurements unitOfMeasure) {
 
+        if(unitOfMeasure != null) {
             final MeasurementCommand uomc = new MeasurementCommand();
             uomc.setId(unitOfMeasure.getId());
-            uomc.setDescription(unitOfMeasure.getUnitOfMeasure());
+            uomc.setDescription(unitOfMeasure.getDescription());
             return uomc;
+        }
 
+        return null;
 
     }
 }

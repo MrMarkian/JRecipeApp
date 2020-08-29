@@ -1,6 +1,8 @@
 package com.springframework.Controllers;
 
 import com.springframework.commands.IngredientsCommand;
+import com.springframework.commands.MeasurementCommand;
+import com.springframework.commands.RecipeCommand;
 import com.springframework.services.IngredientService;
 import com.springframework.services.MeasurementsService;
 import com.springframework.services.RecipeService;
@@ -21,10 +23,26 @@ public class IngredientController {
     public IngredientController(RecipeService recipeService, IngredientService ingredientService, MeasurementsService measurementsService) {
         this.recipeService = recipeService;
         this.ingredientService = ingredientService;
-
-
         this.measurementsService = measurementsService;
     }
+
+    @GetMapping
+    @RequestMapping("recipe/{recipeId}/ingredient/new")
+    public String newIngredient(@PathVariable String recipeId, Model model){
+
+        RecipeCommand recipeCommand = recipeService.findCommandById(Long.valueOf(recipeId));
+        //todo raise exception if null
+        IngredientsCommand ingredientsCommand = new IngredientsCommand();
+        ingredientsCommand.setRecipeId(Long.valueOf(recipeId));
+
+        model.addAttribute("ingredient", ingredientsCommand);
+        ingredientsCommand.setMeasurementCommand(new MeasurementCommand());
+        model.addAttribute("measurements", measurementsService.listAllMeasurements());
+
+        return "recipe/ingredient/ingredientform";
+
+    }
+
 
     @GetMapping
     @RequestMapping("/recipe/{recipeId}/ingredients")
@@ -54,7 +72,7 @@ public class IngredientController {
     }
 
     @PostMapping
-    @RequestMapping("recipe/{recipeId>/ingredient")
+    @RequestMapping("recipe/{recipeId}/ingredient")
     public String saveOrUpdate(@ModelAttribute IngredientsCommand command)
     {
         IngredientsCommand savedCommand = ingredientService.saveIngredientCommand(command);

@@ -1,16 +1,11 @@
 package com.springframework.domain;
 
-import lombok.Getter;
-import lombok.Setter;
-import net.bytebuddy.dynamic.loading.InjectionClassLoader;
-import org.aspectj.weaver.ast.Not;
-
+import lombok.Data;
 import javax.persistence.*;
 import java.util.HashSet;
 import java.util.Set;
 
-@Getter
-@Setter
+@Data
 @Entity
 public class Recipe {
 

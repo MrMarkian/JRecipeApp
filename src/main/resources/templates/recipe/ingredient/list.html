@@ -25,7 +25,9 @@
 
                 <div class="panel-heading">
                     <h1 class="panel-title">Ingredients</h1>
+                    <p></p>
                 </div>
+                <a class="ui-button" href="#" th:href="@{'/recipe/' + ${recipe.id} + '/ingredient/new'}" role="button">New Ingredient</a>
                 <div class="panel-body">
 
                     <div class="table-responsive" th:if="${not #lists.isEmpty(recipe.ingredientsCommandSet)}">
@@ -33,6 +35,7 @@
                             <thead class="thead-inverse">
                             <tr>
                                 <th>ID</th>
+
                                 <th>Description</th>
                                 <th>View</th>
                                 <th>Update</th>

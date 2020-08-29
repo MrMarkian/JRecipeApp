@@ -33,49 +33,49 @@ public class RecipeBootstrap implements ApplicationListener<ContextRefreshedEven
 
         List<Recipe> recipies = new ArrayList<>(2);
 
-        Optional<Mesurements> eachMesurementOptional = measurementsRepository.findByUnitOfMeasure("Each");
+        Optional<Mesurements> eachMesurementOptional = measurementsRepository.findByDescription("Each");
 
         if (!eachMesurementOptional.isPresent()) {
             throw new RuntimeException("Each - Measurement not found.. ");
         }
 
-        Optional<Mesurements> teaSpoonMesurementOptional = measurementsRepository.findByUnitOfMeasure("Tea Spoon");
+        Optional<Mesurements> teaSpoonMesurementOptional = measurementsRepository.findByDescription("Tea Spoon");
 
         if (!teaSpoonMesurementOptional.isPresent()) {
             throw new RuntimeException("Tea Spoon - Measurement not found.. ");
         }
 
-        Optional<Mesurements> cupMesurementOptional = measurementsRepository.findByUnitOfMeasure("Cup");
+        Optional<Mesurements> cupMesurementOptional = measurementsRepository.findByDescription("Cup");
 
         if (!cupMesurementOptional.isPresent()) {
             throw new RuntimeException("Cup - Measurement not found.. ");
         }
 
-        Optional<Mesurements> PinchMesurementOptional = measurementsRepository.findByUnitOfMeasure("Pinch");
+        Optional<Mesurements> PinchMesurementOptional = measurementsRepository.findByDescription("Pinch");
 
         if (!PinchMesurementOptional.isPresent()) {
             throw new RuntimeException("Pinch - Measurement not found.. ");
         }
 
-        Optional<Mesurements> gramsMesurementOptional = measurementsRepository.findByUnitOfMeasure("Grams");
+        Optional<Mesurements> gramsMesurementOptional = measurementsRepository.findByDescription("Grams");
 
         if (!gramsMesurementOptional.isPresent()) {
             throw new RuntimeException("Grams- Measurement not found.. ");
         }
 
-        Optional<Mesurements> mlMesurementOptional = measurementsRepository.findByUnitOfMeasure("ml");
+        Optional<Mesurements> mlMesurementOptional = measurementsRepository.findByDescription("ml");
 
         if (!mlMesurementOptional.isPresent()) {
             throw new RuntimeException("ml - Measurement not found.. ");
         }
 
-        Optional<Mesurements> literMesurementOptional = measurementsRepository.findByUnitOfMeasure("Liter");
+        Optional<Mesurements> literMesurementOptional = measurementsRepository.findByDescription("Liter");
 
         if (!literMesurementOptional.isPresent()) {
             throw new RuntimeException("Liter - Measurement not found.. ");
         }
 
-        Optional<Mesurements> KgMesurementOptional = measurementsRepository.findByUnitOfMeasure("Kg");
+        Optional<Mesurements> KgMesurementOptional = measurementsRepository.findByDescription("Kg");
 
         if (!KgMesurementOptional.isPresent()) {
             throw new RuntimeException("Kg - Measurement not found.. ");

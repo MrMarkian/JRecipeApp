@@ -1,14 +1,13 @@
 package com.springframework.domain;
 
+import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.Setter;
 
 import javax.persistence.*;
 import java.math.BigDecimal;
-
-@Getter
-@Setter
+@Data
 @EqualsAndHashCode(exclude = {"recipe"})
 @Entity
 public class Ingredient {
@@ -26,7 +25,15 @@ public class Ingredient {
 
 
     public Ingredient() {
+
     }
+
+    public Ingredient(String description, BigDecimal amount, Mesurements uom) {
+        this.description = description;
+        this.amount = amount;
+        this.mesurements = uom;
+    }
+
 
     public Ingredient(String description, BigDecimal amount, Mesurements uom, Recipe recipe) {
         this.description = description;

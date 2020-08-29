@@ -25,9 +25,6 @@ public class IngredientCommandToIngredient implements Converter<IngredientsComma
     @Override
     public Ingredient convert(IngredientsCommand source) {
 
-        if (source == null) {
-            return null;
-        }
 
         final Ingredient ingredient = new Ingredient();
         ingredient.setId(source.getId());

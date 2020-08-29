@@ -80,7 +80,7 @@
         <tr th:each="ingredient : ${recipe.getIngredients()}">
            <td th:text="${ingredient.description} "> </td>
             <td th:text="${ingredient.getAmount()} "> </td>
-            <td th:text="${ingredient.mesurements.unitOfMeasure} "> </td>
+            <td th:text="${ingredient.mesurements.description} "> </td>
 
         </tr>
     </table>

@@ -18,10 +18,12 @@ public class MeasureCommandToMesurment implements Converter<MeasurementCommand, 
     @Override
     public Mesurements convert(MeasurementCommand source) {
 
-
+        if (source == null) {
+            return null;
+        }
         final Mesurements uom = new Mesurements();
         uom.setId(source.getId());
-        uom.setUnitOfMeasure(source.getDescription());
+        uom.setDescription(source.getDescription());
         return uom;
     }
 }
