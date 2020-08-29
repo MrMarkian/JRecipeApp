@@ -3,7 +3,7 @@ package com.springframework.services;
 import com.springframework.commands.IngredientsCommand;
 import com.springframework.domain.Ingredient;
 import com.springframework.domain.Recipe;
-import com.springframework.domain.repositories.RecipeRepository;
+import com.springframework.repositories.RecipeRepository;
 import org.junit.jupiter.api.Test;
 
 import java.util.Optional;

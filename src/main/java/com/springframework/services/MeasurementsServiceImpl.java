@@ -2,7 +2,7 @@ package com.springframework.services;
 
 import com.springframework.commands.MeasurementCommand;
 import com.springframework.converters.MeasuremntToMeasureCommand;
-import com.springframework.domain.repositories.MeasurementsRepository;
+import com.springframework.repositories.MeasurementsRepository;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;

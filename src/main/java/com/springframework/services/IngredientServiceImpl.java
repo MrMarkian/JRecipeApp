@@ -5,8 +5,8 @@ import com.springframework.converters.IngredientCommandToIngredient;
 import com.springframework.converters.IngredientToIngredientCommand;
 import com.springframework.domain.Ingredient;
 import com.springframework.domain.Recipe;
-import com.springframework.domain.repositories.MeasurementsRepository;
-import com.springframework.domain.repositories.RecipeRepository;
+import com.springframework.repositories.MeasurementsRepository;
+import com.springframework.repositories.RecipeRepository;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 

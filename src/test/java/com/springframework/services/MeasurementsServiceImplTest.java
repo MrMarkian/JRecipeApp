@@ -3,7 +3,7 @@ package com.springframework.services;
 import com.springframework.commands.MeasurementCommand;
 import com.springframework.converters.MeasuremntToMeasureCommand;
 import com.springframework.domain.Mesurements;
-import com.springframework.domain.repositories.MeasurementsRepository;
+import com.springframework.repositories.MeasurementsRepository;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mock;

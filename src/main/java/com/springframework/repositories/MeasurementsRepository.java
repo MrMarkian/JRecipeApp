@@ -1,4 +1,4 @@
-package com.springframework.domain.repositories;
+package com.springframework.repositories;
 
 import com.springframework.domain.Mesurements;
 import org.springframework.data.repository.CrudRepository;

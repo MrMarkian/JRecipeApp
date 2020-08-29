@@ -4,7 +4,7 @@ import com.springframework.commands.RecipeCommand;
 import com.springframework.converters.RecipeCommandToRecipe;
 import com.springframework.converters.RecipeToRecipeCommand;
 import com.springframework.domain.Recipe;
-import com.springframework.domain.repositories.RecipeRepository;
+import com.springframework.repositories.RecipeRepository;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 

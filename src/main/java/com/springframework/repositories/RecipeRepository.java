@@ -1,4 +1,4 @@
-package com.springframework.domain.repositories;
+package com.springframework.repositories;
 
 import com.springframework.domain.Recipe;
 import org.springframework.data.repository.CrudRepository;

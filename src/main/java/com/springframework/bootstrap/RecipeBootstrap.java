@@ -1,9 +1,9 @@
 package com.springframework.bootstrap;
 
 import com.springframework.domain.*;
-import com.springframework.domain.repositories.CatagoryRepository;
-import com.springframework.domain.repositories.MeasurementsRepository;
-import com.springframework.domain.repositories.RecipeRepository;
+import com.springframework.repositories.CatagoryRepository;
+import com.springframework.repositories.MeasurementsRepository;
+import com.springframework.repositories.RecipeRepository;
 import org.springframework.context.ApplicationListener;
 import org.springframework.context.event.ContextRefreshedEvent;
 import org.springframework.stereotype.Component;
