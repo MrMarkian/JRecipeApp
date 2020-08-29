@@ -13,6 +13,7 @@
 
 </head>
 <body>
+<div></div>
 <div class="card mx-auto">
     <div class="card-body">
 <div class="table-responsive">
@@ -42,6 +43,6 @@
 </div>
     </div>
 </div>
-
+<a class="btn btn-primary" href="#" th:href="@{'/recipe/' + ${ingredient.getRecipeId()} + '/ingredients'}" >Back to List</a>
 </body>
 </html>

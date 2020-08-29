@@ -43,7 +43,7 @@
                 <div class="form-group-lg">
                     <label>
                         Recipe Description:
-                        <input type="text" class="form-control" th:field="*{description}"/>
+                        <input size="75" type="text" class="form-control" th:field="*{description}"/>
                     </label>
                     <p></p>
 
@@ -74,11 +74,12 @@
 
                         <label>Difficulty:
 
-                            <select class="form-control">
-                                <option>Easy</option>
-                                <option>Medium</option>
-                                <option>Hard</option>
-                            </select>
+                            <select style="width: 220px"  class="form-control" th:field="*{difficulty}">
+                                <option th:each="difficultyValue: ${T(com.springframework.domain.Difficulty).values()}"
+                                        th:value="${difficultyValue.name()}"
+                                    th:text="${difficultyValue.name()}">
+                                    Easy</option>
+                                    </select>
 
                         </label>
 
@@ -97,17 +98,15 @@
                 </div>
 
                 <label>Directions:
-                    <textarea class="form-control" rows="3" th:field="*{directions}"></textarea>
+                    <textarea class="form-control" rows="8" cols="32" th:field="*{directions}"></textarea>
                 </label>
                     <label>Notes:
-                    <textarea class="form-control" rows="3" th:field="*{notes.recipeNotes}"></textarea>
+                    <textarea class="form-control" rows="8" cols="32" th:field="*{notes.recipeNotes}"></textarea>
                 </label>
 
                     <div class="col-md-11 ">
                         <h3 class="panel-title">Ingredients</h3>
-                    </div>
-                    <div class="col-md-1">
-                        <a class="btn btn-default" href="#" role="button">Edit</a>
+                        <a class="btn btn-default" href="#" th:href="@{'/recipe/' + ${recipe.id} + '/ingredients'}" role="button">View</a>
                     </div>
 
 

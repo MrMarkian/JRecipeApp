@@ -1,6 +1,7 @@
 package com.springframework.commands;
 
 import com.springframework.domain.Difficulty;
+import lombok.Data;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -8,8 +9,7 @@ import lombok.Setter;
 import java.util.HashSet;
 import java.util.Set;
 
-@Setter
-@Getter
+@Data
 @NoArgsConstructor
 public class RecipeCommand {
 

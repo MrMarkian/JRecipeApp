@@ -27,7 +27,8 @@
                     <h1 class="panel-title">Ingredients</h1>
                     <p></p>
                 </div>
-                <a class="ui-button" href="#" th:href="@{'/recipe/' + ${recipe.id} + '/ingredient/new'}" role="button">New Ingredient</a>
+                <a class="btn btn-primary" href="#" th:href="@{'/recipe/' + ${recipe.id} + '/ingredient/new'}" role="button">New Ingredient</a>
+                <p></p>
                 <div class="panel-body">
 
                     <div class="table-responsive" th:if="${not #lists.isEmpty(recipe.ingredientsCommandSet)}">
@@ -69,7 +70,9 @@
             </div>
         </div>
     </div>
+        <a class="btn btn-primary" href="#" th:href="@{'/recipe/'  + '/show/' + ${recipe.id}}" role="button">Back</a>
 </div>
+
 </div>
 
 </body>
