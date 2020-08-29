@@ -20,6 +20,10 @@ class IngredientServiceImplTest {
     private RecipeRepository recipeRepository;
     private IngredientService ingredientService;
 
+    public IngredientServiceImplTest(RecipeRepository recipeRepository) {
+        this.recipeRepository = recipeRepository;
+    }
+
     @Test
     void findByRecipeIdAndIngredientId() {
     }
