@@ -15,45 +15,49 @@
 </head>
 <body>
 
-<div class="card mx-auto">
+<div class="container">
+<div class="card mx-auto" style="margin-top: 20px">
 
     <form  th:object="${ingredient}" th:action="@{'/recipe/' +${ingredient.getRecipeId()} +'/ingredient'}" method="post">
 
         <input type="hidden" th:field="*{id}"/>
 
-        <div class="card-body" >
-            <div>
-                 <h1>Edit Ingredient Information</h1>
-            </div>
-            <div class="row">
-                <div class="col-md-3 form-group">
+                <h1 class="card-title" style="margin-left: 20px"> Edit Ingredient Information
+                    <a class="btn btn-primary" style="margin-left: 20px" href="#" th:href="@{'/recipe/' + ${ingredient.getRecipeId()} + '/ingredients'}" >Back</a>
+        </h1>
+        <ol class="breadcrumb bread-primary"></ol>
+
+
+
+            <div class="flex-row" style="margin-inside: 20px">
+                <div class="col-md-12 form-group">
                     <label>Description
-                        <input type="text" class="form-control" th:field="*{description}"/>
+                        <textarea type="text" class="form-control" cols="180" rows="6" th:field="*{description}"/>
                     </label>
                 </div>
 
-                <div class="col-md-3 form-group">
+                <div class="col-md-8 form-group">
                     <label>Amount:
-                        <input type="number" class="form-control" th:field="*{amount}"/>
+                        <input type="number" class="form-control" col th:field="*{amount}"/>
                     </label>
+                    <label>Measurements:
+                    <select class="form-control" name="measurementCommand.id">
+                        <option th:each="uomEach : ${measurements}"
+                                th:value="${uomEach.id}"
+                                th:selected="${uomEach.id.equals(ingredient.measurementCommand.id)}"
+                                th:text="${uomEach.description}">Each</option>
+                    </select>
+                </label><button type="submit" class="btn btn-primary" style="margin-left: 20px"><span>Submit</span></button>
                 </div>
 
-                <div class="col-md-3 form-group">
-                   <label>Measurements:
-                        <select class="form-control" name="measurementCommand.id">
-                            <option th:each="uomEach : ${measurements}"
-                                    th:value="${uomEach.id}"
-                                    th:selected="${uomEach.id.equals(ingredient.measurementCommand.id)}"
-                                    th:text="${uomEach.description}">Each</option>
-                        </select>
-                    </label>
-                </div>
-                <button type="submit" class="btn btn-primary">Submit</button>
-        </div>
+
+
+
+
+
         </div>
     </form>
-
 </div>
-
+</div>
 </body>
 </html>

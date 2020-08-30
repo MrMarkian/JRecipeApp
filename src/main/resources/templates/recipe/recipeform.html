@@ -17,8 +17,8 @@
 <body>
 
 
-
-<div class="card mx-auto" style="width: 128rem;">
+<div class="container">
+<div class="card mx-auto">
 
         <form th:object="${recipe}" th:action="@{/recipe/}" method="post">
 
@@ -43,7 +43,7 @@
                 <div class="form-group-lg">
                     <label>
                         Recipe Description:
-                        <input size="75" type="text" class="form-control" th:field="*{description}"/>
+                        <input size="90" type="text" class="form-control" th:field="*{description}"/>
                     </label>
                     <p></p>
 
@@ -74,7 +74,7 @@
 
                         <label>Difficulty:
 
-                            <select style="width: 220px"  class="form-control" th:field="*{difficulty}">
+                            <select style="width: 235px"  class="form-control" th:field="*{difficulty}">
                                 <option th:each="difficultyValue: ${T(com.springframework.domain.Difficulty).values()}"
                                         th:value="${difficultyValue.name()}"
                                     th:text="${difficultyValue.name()}">
@@ -98,10 +98,10 @@
                 </div>
 
                 <label>Directions:
-                    <textarea class="form-control" rows="8" cols="32" th:field="*{directions}"></textarea>
+                    <textarea class="form-control" rows="9" cols="38" th:field="*{directions}"></textarea>
                 </label>
                     <label>Notes:
-                    <textarea class="form-control" rows="8" cols="32" th:field="*{notes.recipeNotes}"></textarea>
+                    <textarea class="form-control" rows="9" cols="38" th:field="*{notes.recipeNotes}"></textarea>
                 </label>
 
                     <div class="col-md-11 ">
@@ -125,11 +125,11 @@
                 <button type="submit" class="btn btn-primary">Submit</button>
 
 
-
+        </form>
 
     </div>
-</form>
 
+</div>
 
 </body>
 </html>

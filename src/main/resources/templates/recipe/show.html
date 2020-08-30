@@ -13,35 +13,36 @@
 
 </head>
 <body>
-
+<div class="container" style="margin-top: 10px">
 <div class="jumbotron">
 
     <div class="card-body">
 
-        <h1 class="card-title text-center"><ins th:text="${recipe.description}"> </ins> </h1>
+        <img  class="card-img-top" th:src="@{'/recipe/' + ${recipe.id} + '/recipeimage'}" style="width: 16rem" align="left">
+        <h1 class="card-title text-lg-center"><ins th:text="${recipe.description}"> </ins> </h1>
 
-        <div class="container-fluid text-center">
+        <div class="container-fluid text-right">
             <div class="row">
                 <div class="col-sm-6">
-                    Prep Time: <em th:utext="${recipe.prepTime}"></em>
+                    <b>Prep Time: </b><em th:utext="${recipe.prepTime}"></em>
                 </div>
                 <div class="col-sm-6">
-                    Cooking Time: <em th:utext="${recipe.cookTime}"></em>
+                    <b>Cooking Time:</b> <em th:utext="${recipe.cookTime}"></em>
                 </div>
             </div>
 
             <div class="row">
                 <div class="col-sm-6">
-                    Servings: <em th:utext="${recipe.servings}"></em>
+                    <b>Servings:</b> <em th:utext="${recipe.servings}"></em>
                 </div>
                 <div class="col-sm-6">
-                    Difficulty: <em th:utext="${recipe.difficulty}"></em>
+                    <b>Difficulty:</b> <em th:utext="${recipe.difficulty}"></em>
                 </div>
             </div>
 
              <div class="row">
                 <div class="col-sm-6">
-                    <table class="table table-striped text-center">
+                    <table class="table table-striped text-right">
                             <tr th:each="catagory : ${recipe.getCategories()}">
                             <td th:text="${catagory.description}"> </td>
                         </tr>
@@ -50,13 +51,13 @@
 
 
                 <div class="col-sm-6">
-                    Url: <em th:utext="${recipe.url}"></em>
+                    <b> Url:</b> <a th:href="${recipe.url}">Visit URL</a>
                 </div>
             </div>
 
            <div class="row">
                <div class="col-lg-4 align-items-center d-flex">
-                   <img src="https://images.pexels.com/photos/704569/pexels-photo-704569.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=300w=200" alt="" class="img-fluid">
+
                </div>
             </div>
 
@@ -65,11 +66,13 @@
     </div>
 </div>
 <a class="btn btn-primary" th:href="@{'/recipe/' + ${recipe.id} + '/ingredients'}" role="button">Edit Ingredients</a>
+
+    <a class="btn btn-primary" th:href="@{'/recipe/' + ${recipe.id} + '/image'}" role="button">Upload new Image</a>
 <p></p>
 <div class="card">
-    <h4 class="card-title">Ingredients:</h4>
+    <h4 class="card-title" style="margin-left: 10px" ><b>Ingredients:</b></h4>
 
-    <table class="table table-bordered table-striped text-center table-hover">
+    <table class="table table-bordered table-striped text-center table-hover" style="margin-inside: 30px">
         <tr>
             <th>Description</th>
             <th>Amount</th>
@@ -92,11 +95,11 @@
 
 <div class="card">
 
-        <h4 class="card-title">Directions:</h4>
-    <div class="card-body text-left text-muted">
+    <h4 class="card-title" style="margin-left: 10px"><b>Directions:</b></h4>
+    <div class="card-body text-left text-muted" style="margin-left: 20px">
 
 
-        <p th:utext="${recipe.directions}"></p>
+        <p th:utext="${recipe.directions}" style="text-align-all: center"></p>
 
 
     </div>
@@ -107,8 +110,8 @@
 
 
 <div class="card">
-    <h4 class="card-title">Notes:</h4>
-    <div class="card-body text-left text-muted">
+    <h4 class="card-title" style="margin-left: 10px"><b>Notes:</b></h4>
+    <div class="card-body text-muted" style="margin-left: 20px">
         <p th:utext="${recipe.notes.recipeNotes}"></p>
     </div>
 
@@ -116,7 +119,7 @@
 
 <p></p>
 <p></p>
-
+</div>
 
 </body>
 </html>
