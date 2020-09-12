@@ -1,0 +1,13 @@
+spring:
+  datasource:
+    url: jdbc:mysql://rpi3.local:3306/recipe_dev
+    username: recipe_dev_user
+    password: dev
+    platform: mysql
+  jpa:
+    hibernate:
+      ddl-auto: validate
+    database-platform: org.hibernate.dialect.MySQL5InnoDBDialect
+    database: mysql
+    show-sql: true
+

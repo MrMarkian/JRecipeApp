@@ -11,14 +11,79 @@
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
     <script src="/webjars/bootstrap/4.5.0/js/bootstrap.min.js"></script>
 
+    <style>
+        .dropdown {
+            position: relative;
+            display: inline;
+        }
+
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background-color: #f9f9f9;
+            min-width: 160px;
+            box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+            z-index: 1;
+        }
+
+        .dropdown:hover .dropdown-content {
+            display: block;
+        }
+
+        .desc {
+            padding: 15px;
+            text-align: center;
+        }
+        .collapsible {
+            background-color: #555555;
+            color: white;
+            cursor: pointer;
+            padding: 18px;
+            width: 100%;
+            border: none;
+            text-align: left;
+            outline: none;
+            font-size: 15px;
+        }
+
+        .active, .collapsible:hover {
+            background-color: #555555;
+        }
+
+        .collapsible:after {
+            content: '\002B';
+            color: white;
+            font-weight: bold;
+            float: right;
+            margin-left: 5px;
+        }
+
+        .active:after {
+            content: "\2212";
+        }
+
+        .content {
+            padding: 0 18px;
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.1s ease-out;
+            background-color: #f1f1f1;
+        }
+    </style>
 </head>
 <body>
-<div class="container" style="margin-top: 10px">
-<div class="jumbotron">
+<div class="container" style="margin-top: 20px">
+<div class="jumbotron shadow rounded">
 
     <div class="card-body">
+        <div class="dropdown">
+            <img  class="card-img-top shadow" th:src="@{'/recipe/' + ${recipe.id} + '/recipeimage'}" style="width: 200px" align="left" th:alt="${recipe.description}">
+            <div class="dropdown-content">
+                <img th:src="@{'/recipe/' + ${recipe.id} + '/recipeimage'}" style="width: 48rem">
+                <div class="desc" th:text="${recipe.description}">Description</div>
+            </div>
+        </div>
 
-        <img  class="card-img-top" th:src="@{'/recipe/' + ${recipe.id} + '/recipeimage'}" style="width: 16rem" align="left">
         <h1 class="card-title text-lg-center"><ins th:text="${recipe.description}"> </ins> </h1>
 
         <div class="container-fluid text-right">
@@ -55,53 +120,39 @@
                 </div>
             </div>
 
-           <div class="row">
-               <div class="col-lg-4 align-items-center d-flex">
+                   <a class="btn btn-primary alert-dark" th:href="@{'/recipe/' + ${recipe.id} + '/ingredients'}" role="button">Edit Ingredients</a>
 
-               </div>
-            </div>
-
+                   <a class="btn btn-primary alert-dark" th:href="@{'/recipe/' + ${recipe.id} + '/image'}" role="button">Upload new Image</a>
         </div>
-
     </div>
 </div>
-<a class="btn btn-primary" th:href="@{'/recipe/' + ${recipe.id} + '/ingredients'}" role="button">Edit Ingredients</a>
 
-    <a class="btn btn-primary" th:href="@{'/recipe/' + ${recipe.id} + '/image'}" role="button">Upload new Image</a>
-<p></p>
-<div class="card">
-    <h4 class="card-title" style="margin-left: 10px" ><b>Ingredients:</b></h4>
+    <button class="collapsible shadow">Open Ingregedints</button>
+    <div class="content">
+<div class="card shadow">
 
-    <table class="table table-bordered table-striped text-center table-hover" style="margin-inside: 30px">
+    <table class="table table-bordered table-striped text-center table-hover">
         <tr>
             <th>Description</th>
             <th>Amount</th>
             <th>Measurment</th>
-
         </tr>
 
         <tr th:each="ingredient : ${recipe.getIngredients()}">
            <td th:text="${ingredient.description} "> </td>
             <td th:text="${ingredient.getAmount()} "> </td>
             <td th:text="${ingredient.mesurements.description} "> </td>
-
         </tr>
     </table>
 
 </div>
+    </div>
 
-<p></p>
-<p></p>
-
-<div class="card">
+<div class="card shadow" style="margin-top: 20px">
 
     <h4 class="card-title" style="margin-left: 10px"><b>Directions:</b></h4>
     <div class="card-body text-left text-muted" style="margin-left: 20px">
-
-
-        <p th:utext="${recipe.directions}" style="text-align-all: center"></p>
-
-
+        <span class="help-block" th:utext="${recipe.directions}"  ></span>
     </div>
 </div>
 
@@ -109,7 +160,7 @@
 <p></p>
 
 
-<div class="card">
+<div class="card shadow" style="margin-top: 20px">
     <h4 class="card-title" style="margin-left: 10px"><b>Notes:</b></h4>
     <div class="card-body text-muted" style="margin-left: 20px">
         <p th:utext="${recipe.notes.recipeNotes}"></p>
@@ -120,6 +171,23 @@
 <p></p>
 <p></p>
 </div>
+
+<script>
+    var coll = document.getElementsByClassName("collapsible");
+    var i;
+
+    for (i = 0; i < coll.length; i++) {
+        coll[i].addEventListener("click", function() {
+            this.classList.toggle("active");
+            var content = this.nextElementSibling;
+            if (content.style.maxHeight){
+                content.style.maxHeight = null;
+            } else {
+                content.style.maxHeight = content.scrollHeight + "px";
+            }
+        });
+    }
+</script>
 
 </body>
 </html>

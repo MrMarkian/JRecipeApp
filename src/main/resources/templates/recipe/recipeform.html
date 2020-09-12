@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en"  xmlns:th="http://www.thymeleaf.org">
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/html">
 <head>
     <meta charset="UTF-8"/>
     <title>Title</title>
@@ -17,16 +17,29 @@
 <body>
 
 
-<div class="container">
-<div class="card mx-auto">
+<div class="container" style="margin-top: 20px">
+<div class="card mx-auto shadow">
 
         <form th:object="${recipe}" th:action="@{/recipe/}" method="post">
 
             <input type="hidden" th:field="*{id}"/>
-
-
+    <div class="card-header shadow">
+      <h2>Edit Recipe Information</h2>
+    </div>
             <div class="card-body">
-                <h2>Edit Recipe Information</h2>
+            <div th:if="${#fields.hasErrors('*')}" class="alert alert-danger" >
+                <p>Please correct the Errors Below</p>
+
+                <ul>
+                    <li th:each="err : ${#fields.errors('description')}" th:text="'Description- ' + ${err}"/>
+                    <li th:each="err : ${#fields.errors('preptime')}" th:text="'Preptime- ' + ${err}"/>
+                    <li th:each="err : ${#fields.errors('cooktime')}" th:text="'Cooktime- ' + ${err}"/>
+                    <li th:each="err : ${#fields.errors('servings')}" th:text="'Servings- ' + ${err}"/>
+                    <li th:each="err : ${#fields.errors('url')}" th:text="'URL- ' + ${err}"/>
+                    <li th:each="err : ${#fields.errors('directions')}" th:text="'Directions- ' + ${err}"/>
+
+                </ul>
+            </div>
 
                 <div class="dropdown">
                     <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -40,24 +53,33 @@
                 </div>
 
 
-                <div class="form-group-lg">
-                    <label>
+                <div class="form-group-lg" >
+
+
+                    <label th:class="${#fields.hasErrors('description')} ? 'alert-danger' : 'dark' ">
                         Recipe Description:
                         <input size="90" type="text" class="form-control" th:field="*{description}"/>
                     </label>
+
+
+                    </div>
+
+
                     <p></p>
 
-                    <label>Recipe Prep time:
+
+                    <label th:class="${#fields.hasErrors('preptime')} ? 'alert-danger' : 'dark' ">Recipe Prep time:
                         <input type="text" class="form-control" th:field="*{preptime}"/>
                     </label>
 
 
-                    <label>Recipe Cook time:
+
+                    <label th:class="${#fields.hasErrors('cooktime')} ? 'alert-danger' : 'dark' ">Recipe Cook time:
                         <input type="text" class="form-control" th:field="*{cooktime}"/>
                     </label>
 
 
-                    <label>Servings:
+                    <label th:class="${#fields.hasErrors('servings')} ? 'alert-danger' : 'dark' ">Servings:
                         <input type="text" class="form-control" th:field="*{servings}"/>
                     </label>
 
@@ -68,7 +90,7 @@
                             Source:
                             <input type="text" class="form-control" th:field="*{source}"/>
                         </label>
-                        <label>URL:
+                        <label th:class="${#fields.hasErrors('url')} ? 'alert-danger' : 'dark' ">URL:
                             <input type="text" class="form-control" th:field="*{url}"/>
                         </label>
 
@@ -95,18 +117,19 @@
                         </div>
 
                     </div>
-                </div>
 
-                <label>Directions:
+
+                <label th:class="${#fields.hasErrors('directions')} ? 'alert-danger' : 'dark' ">Directions:
                     <textarea class="form-control" rows="9" cols="38" th:field="*{directions}"></textarea>
                 </label>
-                    <label>Notes:
+                    <label th:class="${#fields.hasErrors('notes')} ? 'alert-danger' : 'dark' ">Notes:
                     <textarea class="form-control" rows="9" cols="38" th:field="*{notes.recipeNotes}"></textarea>
                 </label>
 
                     <div class="col-md-11 ">
                         <h3 class="panel-title">Ingredients</h3>
                         <a class="btn btn-default" href="#" th:href="@{'/recipe/' + ${recipe.id} + '/ingredients'}" role="button">View</a>
+                        <a class="btn btn-default" href="#" th:href="@{'/recipe/' + ${recipe.id} + '/ingredient/new'}" role="button">Add Ingredients</a>
                     </div>
 
 
